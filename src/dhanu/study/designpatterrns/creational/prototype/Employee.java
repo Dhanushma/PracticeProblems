@@ -36,4 +36,13 @@ public class Employee implements Cloneable{
     public Object clone() {
         return new Employee(this.name, this.id, this.position);
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", id='" + id + '\'' +
+                ", position='" + position + '\'' +
+                '}';
+    }
 }
