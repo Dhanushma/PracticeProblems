@@ -1,9 +1,6 @@
 package dhanu.study.medium;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class BestAvrageGrade {
@@ -34,6 +31,12 @@ public class BestAvrageGrade {
             }
         }
 
+
+        // or
+        Map<String, List<Integer>> studentScores = Arrays.stream(scores).collect(Collectors.groupingBy(score -> score[0], Collectors.mapping(score -> Integer.parseInt(score[1]), Collectors.toList())));
+        OptionalDouble bestAverage = studentScores.values().stream()
+                .mapToDouble(sc -> sc.stream().mapToInt(Integer::intValue).average().orElse(0))
+                .max();
         return maxAvg;
 
 
